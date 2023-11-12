@@ -2,7 +2,7 @@
 
 @section('base')
     <main class="login container">
-        <h2 class="text-center">ログイン画面</h2>
+        <h2 class="text-center">新規登録画面</h2>
         {{ Form::open(['url' => route('register'), 'method' => 'post']) }}
         <div class="card">
             <div class="card-body">
@@ -49,6 +49,7 @@
                 <div class="d-grid gap-2 col-6 mx-auto">
                     <button class="btn btn-primary">登録</button>
                 </div>
+                <p class="text-center"><a href="{{route('login')}}">ログイン</a></p>
             </div>
         </div>
         {{ Form::close() }}

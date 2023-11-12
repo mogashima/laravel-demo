@@ -27,6 +27,7 @@
                 <div class="d-grid gap-2 col-6 mx-auto">
                     <button class="btn btn-primary">ログイン</button>
                 </div>
+                <p class="text-center"><a href="{{route('register')}}">新規登録</a></p>
             </div>
         </div>
         {{ Form::close() }}

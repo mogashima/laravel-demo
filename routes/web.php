@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Web\WebDeviceController;
 use App\Http\Controllers\Web\WebUserController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,6 +35,16 @@ Route::controller(WebUserController::class)->group(function () {
     Route::get('/user/{user}/edit', 'edit')->name('web.user.edit');
     Route::post('/user', 'store')->name('web.user.store');
     Route::delete('/user/{user}', 'destroy')->name('web.user.destroy');
+});
+
+// 端末
+Route::controller(WebDeviceController::class)->group(function () {  
+    Route::get('/device', 'index')->name('web.device.index');
+    Route::get('/device/create', 'create')->name('web.device.create');
+    Route::get('/device/{device}', 'show')->name('web.device.show');
+    Route::get('/device/{device}/edit', 'edit')->name('web.device.edit');
+    Route::post('/device', 'store')->name('web.device.store');
+    Route::delete('/device/{device}', 'destroy')->name('web.device.destroy');
 });
 
 

@@ -1,0 +1,35 @@
+$login-max-width: 500px;
+
+main.login {
+    max-width: $login-max-width;
+    margin: 0 auto;
+    padding-top: 2em;
+
+    div.card-body>div {
+        margin: 1em 1em 2em 1em;
+    }
+}
+
+header {
+    margin-top: 1em;
+}
+
+nav {
+    .equal-spacing {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .nav-contents {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}

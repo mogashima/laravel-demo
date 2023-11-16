@@ -17,12 +17,25 @@ class UserService extends BaseService
         return User::getById($id);
     }
 
+    public function getShow($id)
+    {
+        return User::getShow($id);
+    }
+
     public function validStore(Request $request)
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+    }
+
+    public function validUpdate(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users,id,' . $request->id . ',email'],
         ]);
     }
 

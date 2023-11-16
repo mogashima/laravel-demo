@@ -16,7 +16,14 @@
                 <th class="table-secondary">メールアドレス</th>
                 <td>{{ $user->email }}</td>
             </tr>
-            
+            <tr>
+                <th class="table-secondary">端末</th>
+                <td>
+                    @foreach ($devices as $device)
+                        <label>{{ $device->name }}</label>
+                    @endforeach
+                </td>
+            </tr>
         </table>
         <div class="d-flex">
             <a href="{{ route('web.user.index') }}" class="btn btn-primary me-auto">戻る</a>

@@ -56,6 +56,7 @@ class User extends Authenticatable
     {
         return self::findOrFail($id);
     }
+
     public static function store($data)
     {
         return self::create([

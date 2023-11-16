@@ -9,8 +9,12 @@
                 <td>{{ $device->id }}</td>
             </tr>
             <tr>
-                <th class="table-secondary">名前</th>
+                <th class="table-secondary">端末名</th>
                 <td>{{ $device->name }}</td>
+            </tr>
+            <tr>
+                <th class="table-secondary">利用者</th>
+                <td>{{ $device->user_name }}</td>
             </tr>
         </table>
         <div class="d-flex">

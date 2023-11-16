@@ -36,13 +36,31 @@ class WebDeviceController extends WebController
 
     public function show(Request $request, $id)
     {
-        $device = $this->deviceService->getById($id);
+        $device = $this->deviceService->getShow($id);
         return view('web.device.show', compact('device'));
     }
 
     public function destroy($id)
     {
-        $this->deviceService->destory($id);
+        $device = $this->deviceService->getById($id);
+        $device->delete();
+        $this->deviceService->deleteOwner($id);
         return redirect()->route('web.device.index');
+    }
+
+    public function edit(Request $request, $id)
+    {
+        $device = $this->deviceService->getShow($id);
+        $users = $this->deviceService->getCompanyUsers();
+        return view('web.device.edit', compact('device', 'users'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $device = $this->deviceService->getById($id);
+        $this->deviceService->validUpdate($request);
+        $device->update($request->only('name'));
+        $this->deviceService->updateDeviceOwner($id, $request->user_id);
+        return redirect()->route('web.device.show', ['device' => $device->id]);
     }
 }

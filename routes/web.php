@@ -34,6 +34,7 @@ Route::controller(WebUserController::class)->group(function () {
     Route::get('/user/{user}', 'show')->name('web.user.show');
     Route::get('/user/{user}/edit', 'edit')->name('web.user.edit');
     Route::post('/user', 'store')->name('web.user.store');
+    Route::put('/user/{user}', 'update')->name('web.user.update');
     Route::delete('/user/{user}', 'destroy')->name('web.user.destroy');
 });
 
@@ -44,6 +45,7 @@ Route::controller(WebDeviceController::class)->group(function () {
     Route::get('/device/{device}', 'show')->name('web.device.show');
     Route::get('/device/{device}/edit', 'edit')->name('web.device.edit');
     Route::post('/device', 'store')->name('web.device.store');
+    Route::put('/device/{device}', 'update')->name('web.device.update');
     Route::delete('/device/{device}', 'destroy')->name('web.device.destroy');
 });
 

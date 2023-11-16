@@ -1,7 +1,7 @@
 @extends('layouts.logined')
 
 @section('content')
-    <div class="question">
+    <div class="device">
         <h2 class="h3">端末編集</h2>
         {{ Form::open(['url' => route('web.device.update', ['device' => $device->id]), 'method' => 'put']) }}
         <table class="table table-bordered">

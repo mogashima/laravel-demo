@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Web\WebCommentController;
 use App\Http\Controllers\Web\WebDeviceController;
 use App\Http\Controllers\Web\WebUserController;
 use Illuminate\Support\Facades\Route;
@@ -24,8 +25,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-Route::get('register', [RegisterController::class,'showRegistrationForm'])->name('register');
-Route::post('register', [RegisterController::class,'register']);
+Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('register', [RegisterController::class, 'register']);
 
 // ユーザ
 Route::controller(WebUserController::class)->group(function () {
@@ -39,7 +40,7 @@ Route::controller(WebUserController::class)->group(function () {
 });
 
 // 端末
-Route::controller(WebDeviceController::class)->group(function () {  
+Route::controller(WebDeviceController::class)->group(function () {
     Route::get('/device', 'index')->name('web.device.index');
     Route::get('/device/create', 'create')->name('web.device.create');
     Route::get('/device/{device}', 'show')->name('web.device.show');
@@ -47,6 +48,12 @@ Route::controller(WebDeviceController::class)->group(function () {
     Route::post('/device', 'store')->name('web.device.store');
     Route::put('/device/{device}', 'update')->name('web.device.update');
     Route::delete('/device/{device}', 'destroy')->name('web.device.destroy');
+});
+
+//　コメント
+Route::controller(WebCommentController::class)->group(function () {
+    Route::get('/notice/{notice}/comment/create', 'create')->name('web.comment.create');
+    Route::post('/notice/{notice}/comment', 'store')->name('web.comment.store');
 });
 
 

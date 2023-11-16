@@ -1,7 +1,7 @@
 @extends('layouts.logined')
 
 @section('content')
-    <div class="question">
+    <div class="user">
         <h2 class="h3">ユーザ一覧</h2>
         <table class="table table-bordered">
             <thead>
@@ -25,4 +25,5 @@
         <div class="d-flex">
             <a href="{{ route('web.user.create') }}" class="btn btn-primary ms-auto">作成</a>
         </div>
-    @endsection
+    </div>
+@endsection

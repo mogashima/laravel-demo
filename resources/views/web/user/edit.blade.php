@@ -1,7 +1,7 @@
 @extends('layouts.logined')
 
 @section('content')
-    <div class="question">
+    <div class="user">
         <h2 class="h3">ユーザ編集</h2>
         {{ Form::open(['url' => route('web.user.update', ['user' => $user->id]), 'method' => 'put']) }}
         <table class="table table-bordered">
@@ -37,4 +37,5 @@
             <button class="btn btn-primary ms-auto">更新</button>
         </div>
         {{ Form::close() }}
-    @endsection
+    </div>
+@endsection

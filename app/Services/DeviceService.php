@@ -61,7 +61,8 @@ class DeviceService extends BaseService
         return DeviceOwner::updateDeviceOwner($device_id, $user_id);
     }
 
-    public function deleteOwner($id){
+    public function deleteOwner($id)
+    {
         DeviceOwner::deleteOwner($id);
     }
 }

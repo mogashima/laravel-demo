@@ -1,7 +1,7 @@
 @extends('layouts.logined')
 
 @section('content')
-    <div class="question">
+    <div class="user">
         <h2 class="h3">ユーザ作成</h2>
         {{ Form::open(['url' => route('web.user.store'), 'method' => 'post']) }}
         <table class="table table-bordered">

@@ -1,7 +1,7 @@
 @extends('layouts.logined')
 
 @section('content')
-    <div class="question">
+    <div class="user">
         <h2 class="h3">ユーザ詳細</h2>
         <table class="table table-bordered">
             <tr>
@@ -35,4 +35,5 @@
                 {{ route('web.user.destroy', ['user' => $user->id]) }}
             @endslot
         @endcomponent
-    @endsection
+    </div>
+@endsection

@@ -17,6 +17,9 @@
                         <a class="nav-link" href="{{ route('home') }}">ホーム</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.notice.index') }}">お知らせ</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{{ route('web.device.index') }}">端末</a>
                     </li>
                     <li class="nav-item">

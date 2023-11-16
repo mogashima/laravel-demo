@@ -1,7 +1,7 @@
 @extends('layouts.logined')
 
 @section('content')
-    <div class="question">
+    <div class="device">
         <h2 class="h3">端末詳細</h2>
         <table class="table table-bordered">
             <tr>
@@ -27,4 +27,5 @@
                 {{ route('web.device.destroy', ['device' => $device->id]) }}
             @endslot
         @endcomponent
-    @endsection
+    </div>
+@endsection

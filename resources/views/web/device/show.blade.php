@@ -19,7 +19,9 @@
         </table>
         <div class="d-flex">
             <a href="{{ route('web.device.index') }}" class="btn btn-primary me-auto">戻る</a>
-            <button class="btn btn-danger" id="deleteBtn" data-bs-toggle="modal" data-bs-target="#deleteModal">削除</button>
+            @can('delete', $device)
+                <button class="btn btn-danger" id="deleteBtn" data-bs-toggle="modal" data-bs-target="#deleteModal">削除</button>
+            @endcan
         </div>
 
         @component('layouts.modal.destroy')

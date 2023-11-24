@@ -17,8 +17,11 @@
                         <td>{{ $notice->id }}</td>
                         <td><a href="{{ route('admin.notice.show', ['notice' => $notice->id]) }}">{{ $notice->title }}</a>
                         </td>
-                        <td><a href="{{ route('admin.notice.edit', ['notice' => $notice->id]) }}"
-                                class="btn btn-success">編集</a>
+                        <td>
+                            @can('edit', $notice)
+                                <a href="{{ route('admin.notice.edit', ['notice' => $notice->id]) }}"
+                                    class="btn btn-success">編集</a>
+                            @endcan
                         </td>
 
                     </tr>

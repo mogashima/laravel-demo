@@ -30,4 +30,9 @@ class Comment extends Model
             'created_by' => Auth::user()->id,
         ]);
     }
+
+    public static function destroy($notice_id)
+    {
+        self::where('notice_id', $notice_id)->delete();
+    }
 }

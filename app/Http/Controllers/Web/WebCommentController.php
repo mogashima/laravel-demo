@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Models\Comment;
 use App\Services\CommentService;
 use App\Services\NoticeService;
 use Illuminate\Http\Request;
@@ -21,11 +22,13 @@ class WebCommentController extends WebController
 
     public function create($notice_id)
     {
+        $this->authorize('create', Comment::class);
         return view('web.comment.create', compact('notice_id'));
     }
 
     public function store(Request $request, $notice_id)
     {
+        $this->authorize('store', Comment::class);
         $this->commentService->validStore($request);
         $comment = $this->commentService->store($request, $notice_id);
         return redirect()->route('admin.notice.show', ['notice' => $notice_id]);

@@ -16,7 +16,11 @@
                     <tr>
                         <td>{{ $user->id }}</td>
                         <td><a href="{{ route('web.user.show', ['user' => $user->id]) }}">{{ $user->name }}</a></td>
-                        <td><a href="{{ route('web.user.edit', ['user' => $user->id]) }}" class="btn btn-success">編集</a></td>
+                        <td>
+                            @can('edit', $user)
+                                <a href="{{ route('web.user.edit', ['user' => $user->id]) }}" class="btn btn-success">編集</a>
+                            @endcan
+                        </td>
 
                     </tr>
                 @endforeach

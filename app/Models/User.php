@@ -49,7 +49,7 @@ class User extends Authenticatable
 
     public static function getList()
     {
-        return self::select('users.id', 'users.name')->where('company_id', Auth::user()->id)->get();
+        return self::select('users.id', 'users.name')->where('company_id', Auth::user()->company_id)->get();
     }
 
     public static function getById($id)
@@ -72,4 +72,5 @@ class User extends Authenticatable
     {
         self::where('id', $id)->delete();
     }
+
 }

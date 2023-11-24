@@ -19,7 +19,7 @@ class Notice extends Model
 
     public static function getList()
     {
-        return self::select('notices.id', 'notices.title')->where('company_id', Auth::user()->id)->get();
+        return self::select('notices.id', 'notices.title')->where('company_id', Auth::user()->company_id)->get();
     }
 
     public static function store($data)
@@ -44,7 +44,6 @@ class Notice extends Model
 
     public function comments()
     {
-        //Userモデルのデータを取得する
         return $this->hasMany(Comment::class);
     }
 }

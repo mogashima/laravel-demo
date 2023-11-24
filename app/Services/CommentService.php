@@ -20,4 +20,9 @@ class CommentService extends BaseService
         $data['notice_id'] = $notice_id;
         return Comment::store($data);
     }
+
+    public function deleteByNoticeId($notice_id)
+    {
+        Comment::destroy($notice_id);
+    }
 }

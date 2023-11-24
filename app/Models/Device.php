@@ -17,7 +17,7 @@ class Device extends Model
 
     public static function getList()
     {
-        return self::select('devices.id', 'devices.name')->where('company_id', Auth::user()->id)->get();
+        return self::select('devices.id', 'devices.name')->where('company_id', Auth::user()->company_id)->get();
     }
 
     public static function getById($id)

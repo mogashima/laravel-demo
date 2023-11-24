@@ -16,7 +16,10 @@
                     <tr>
                         <td>{{ $device->id }}</td>
                         <td><a href="{{ route('web.device.show', ['device' => $device->id]) }}">{{ $device->name }}</a></td>
-                        <td><a href="{{ route('web.device.edit', ['device' => $device->id]) }}" class="btn btn-success">編集</a>
+                        <td>
+                            @can('edit', $device)
+                                <a href="{{ route('web.device.edit', ['device' => $device->id]) }}" class="btn btn-success">編集</a>
+                            @endcan
                         </td>
 
                     </tr>

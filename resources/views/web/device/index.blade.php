@@ -27,6 +27,7 @@
             </tbody>
         </table>
         <div class="d-flex">
+            <a href="{{ route('web.pdf.device.output') }}" class="btn btn-success">PDF出力</a>
             <a href="{{ route('web.device.create') }}" class="btn btn-primary ms-auto">作成</a>
         </div>
     </div>

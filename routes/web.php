@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Web\WebCommentController;
 use App\Http\Controllers\Web\WebDeviceController;
+use App\Http\Controllers\Web\WebPdfController;
 use App\Http\Controllers\Web\WebUserController;
 use Illuminate\Support\Facades\Route;
 
@@ -48,6 +49,11 @@ Route::controller(WebDeviceController::class)->group(function () {
     Route::post('/device', 'store')->name('web.device.store');
     Route::put('/device/{device}', 'update')->name('web.device.update');
     Route::delete('/device/{device}', 'destroy')->name('web.device.destroy');
+});
+
+// PDF処理
+Route::controller(WebPdfController::class)->group(function () {
+    Route::get('/pdf/device/output', 'deviceOutput')->name('web.pdf.device.output');
 });
 
 //　コメント

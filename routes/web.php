@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Web\WebCommentController;
 use App\Http\Controllers\Web\WebDeviceController;
+use App\Http\Controllers\Web\WebDeviceExcelController;
 use App\Http\Controllers\Web\WebPdfController;
 use App\Http\Controllers\Web\WebUserController;
 use Illuminate\Support\Facades\Route;
@@ -40,6 +41,14 @@ Route::controller(WebUserController::class)->group(function () {
     Route::delete('/user/{user}', 'destroy')->name('web.user.destroy');
 });
 
+// 端末Excel処理
+Route::controller(WebDeviceExcelController::class)->group(function () {
+    Route::get('/device/excel', 'index')->name('web.device.excel.index');
+    Route::get('/device/excel/list', 'downloadList')->name('web.device.excel.list');
+    Route::post('/device/excel/import', 'import')->name('web.device.excel.import');
+
+});
+
 // 端末
 Route::controller(WebDeviceController::class)->group(function () {
     Route::get('/device', 'index')->name('web.device.index');
@@ -50,6 +59,7 @@ Route::controller(WebDeviceController::class)->group(function () {
     Route::put('/device/{device}', 'update')->name('web.device.update');
     Route::delete('/device/{device}', 'destroy')->name('web.device.destroy');
 });
+
 
 // PDF処理
 Route::controller(WebPdfController::class)->group(function () {

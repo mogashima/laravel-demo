@@ -22,6 +22,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', 'home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Mailテスト
+Route::get('/mail', [App\Http\Controllers\HomeController::class, 'mail'])->name('mail');
 
 // ログイン関連のルート
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');

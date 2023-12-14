@@ -16,6 +16,28 @@
                     </p>
                 </td>
             </tr>
+            <tr>
+                <th class="table-secondary">型番</th>
+                <td>
+                    {{ Form::text('serial_number', old('serial_number'), ['class' => 'form-control' . ($errors->has('serial_number') ? ' is-invalid' : '')]) }}
+                    <p class="invalid-feedback">
+                        @error('serial_number')
+                            {{ $message }}
+                        @enderror
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <th class="table-secondary">金額</th>
+                <td>
+                    {{ Form::text('amount', old('amount'), ['class' => 'form-control' . ($errors->has('amount') ? ' is-invalid' : '')]) }}
+                    <p class="invalid-feedback">
+                        @error('amount')
+                            {{ $message }}
+                        @enderror
+                    </p>
+                </td>
+            </tr>
         </table>
 
         <div class="d-flex">

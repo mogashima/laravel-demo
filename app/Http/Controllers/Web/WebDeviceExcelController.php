@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Services\DevicePdfService;
+use App\Services\DeviceExcelService;
 
+use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Logics\DeviceExcelImportLogic;
 use App\Exports\DeviceExport;
 use App\Imports\DeviceImport;
 
 class WebDeviceExcelController extends WebController
 {
-    protected $devicePdfService;
+    protected $deviceExcelService;
 
-    public function __construct(DevicePdfService $devicePdfService)
+    public function __construct(DeviceExcelService $deviceExcelService)
     {
-        $this->devicePdfService = $devicePdfService;
+        $this->deviceExcelService = $deviceExcelService;
         $this->middleware('auth');
     }
 
@@ -29,16 +31,25 @@ class WebDeviceExcelController extends WebController
         return Excel::download(new DeviceExport, "$date.xlsx");
     }
 
-    public function import()
+    public function store(Request $request)
     {
+        $this->deviceExcelService->bulkStore($request->all());
+        return redirect()->route('web.device.index');
+    }
 
-        //ファイルが選択されていない場合
-        if (request()->file('file') == false) {
-            return back()->with('importMessage', 'ファイルを選択してください');
+    public function import(Request $request)
+    {
+        $deviceExcelImportLogic = new DeviceExcelImportLogic($request->file('file'));
+        //Excel::import(new DeviceImport, request()->file('file'));
+        if ($deviceExcelImportLogic->hasErrorMessage()) {
+            return back()->with('importError', $deviceExcelImportLogic->getErrorMessage());
         }
 
-        Excel::import(new DeviceImport, request()->file('file'));
-        return redirect()->route('web.device.index');
+        $datas = $deviceExcelImportLogic->getDatas();
+        $canStore = $deviceExcelImportLogic->canStore();
+        return view('web.device.excel.import', compact('datas', 'canStore'));
+
+
     }
 
 

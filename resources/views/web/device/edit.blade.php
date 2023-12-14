@@ -21,9 +21,31 @@
                 </td>
             </tr>
             <tr>
-                <th class="table-secondary">使用者</th>
+                <th class="table-secondary">型番</th>
                 <td>
-                    {{ Form::select('user_id', $users, $device->user_id, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : '')]) }}
+                    {{ Form::text('serial_number', old('serial_number', $device->serial_number), ['class' => 'form-control' . ($errors->has('serial_number') ? ' is-invalid' : '')]) }}
+                    <p class="invalid-feedback">
+                        @error('serial_number')
+                            {{ $message }}
+                        @enderror
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <th class="table-secondary">金額</th>
+                <td>
+                    {{ Form::text('amount', old('amount', $device->amount), ['class' => 'form-control' . ($errors->has('amount') ? ' is-invalid' : '')]) }}
+                    <p class="invalid-feedback">
+                        @error('amount')
+                            {{ $message }}
+                        @enderror
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <th class="table-secondary">利用者</th>
+                <td>
+                    {{ Form::select('user_id', $users, $device->user_id, ['class' => 'form-control' . ($errors->has('user_id') ? ' is-invalid' : '')]) }}
                     <p class="invalid-feedback">
                         @error('user_id')
                             {{ $message }}

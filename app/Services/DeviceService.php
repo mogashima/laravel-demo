@@ -41,6 +41,8 @@ class DeviceService extends BaseService
     {
         $request->validate([
             'name' => ['required', 'string', 'max:50'],
+            'serial_number' => ['nullable', 'string', 'max:20'],
+            'amount' => ['nullable', 'integer', 'digits_between:0,5'],
         ]);
     }
 
@@ -48,6 +50,9 @@ class DeviceService extends BaseService
     {
         $request->validate([
             'name' => ['required', 'string', 'max:50'],
+            'serial_number' => ['nullable', 'string', 'max:20'],
+            'amount' => ['nullable', 'integer', 'digits_between:0,5'],
+            'user_id' => ['nullable', 'integer'],
         ]);
     }
 

@@ -7,7 +7,7 @@
             <thead>
                 <tr class="table-secondary">
                     <th>ID</th>
-                    <th>名前</th>
+                    <th>端末名</th>
                     <th>編集</th>
                 </tr>
             </thead>

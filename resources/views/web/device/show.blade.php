@@ -13,6 +13,14 @@
                 <td>{{ $device->name }}</td>
             </tr>
             <tr>
+                <th class="table-secondary">型番</th>
+                <td>{{ $device->serial_number }}</td>
+            </tr>
+            <tr>
+                <th class="table-secondary">金額</th>
+                <td>{{ $device->amount }}</td>
+            </tr>
+            <tr>
                 <th class="table-secondary">利用者</th>
                 <td>{{ $device->user_name }}</td>
             </tr>

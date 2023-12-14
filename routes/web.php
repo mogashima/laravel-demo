@@ -46,6 +46,7 @@ Route::controller(WebDeviceExcelController::class)->group(function () {
     Route::get('/device/excel', 'index')->name('web.device.excel.index');
     Route::get('/device/excel/list', 'downloadList')->name('web.device.excel.list');
     Route::post('/device/excel/import', 'import')->name('web.device.excel.import');
+    Route::post('/device/excel/store', 'store')->name('web.device.excel.store');
 
 });
 

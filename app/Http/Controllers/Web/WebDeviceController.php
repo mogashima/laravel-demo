@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Web;
 
 use App\Services\DeviceService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Models\Device;
 
 class WebDeviceController extends WebController
@@ -67,7 +66,7 @@ class WebDeviceController extends WebController
         $device = $this->deviceService->getById($id);
         $this->authorize('update', $device);
         $this->deviceService->validUpdate($request);
-        $device->update($request->only('name'));
+        $device->update($request->only('name', 'serial_number', 'amount'));
         $this->deviceService->updateDeviceOwner($id, $request->user_id);
         return redirect()->route('web.device.show', ['device' => $device->id]);
     }

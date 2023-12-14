@@ -13,14 +13,16 @@ class DeviceExport implements FromCollection, WithHeadings
      */
     public function collection()
     {
-        return Device::all()->makeHidden(['created_at', 'updated_at', 'company_id']);
+        return Device::all(['id', 'name', 'serial_number', 'amount'])->makeHidden(['created_at', 'updated_at', 'company_id']);
     }
 
     public function headings(): array
     {
         return [
             'ID',
-            '名前'
+            '端末名',
+            '型番',
+            '金額'
         ];
     }
 }

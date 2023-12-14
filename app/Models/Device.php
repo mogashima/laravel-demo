@@ -12,12 +12,14 @@ class Device extends Model
     protected $fillable = [
         'name',
         'company_id',
-        'user_id'
+        'user_id',
+        'serial_number',
+        'amount',
     ];
 
     public static function getList()
     {
-        return self::select('devices.id', 'devices.name')->where('company_id', Auth::user()->company_id)->get();
+        return self::select('devices.id', 'devices.name', 'devices.serial_number', 'devices.amount')->where('company_id', Auth::user()->company_id)->get();
     }
 
     public static function getById($id)
@@ -27,14 +29,14 @@ class Device extends Model
 
     public static function getByUserId($user_id)
     {
-        return self::select('devices.id', 'devices.name')
+        return self::select('devices.id', 'devices.name', 'devices.serial_number', 'devices.amount')
             ->leftJoin('device_owners', 'devices.id', '=', 'device_owners.device_id')
             ->where('device_owners.user_id', $user_id)->get();
     }
 
     public static function getShow($id)
     {
-        return self::select('devices.id', 'devices.name', 'users.name as user_name', 'users.id as user_id')
+        return self::select('devices.id', 'devices.name', 'devices.serial_number', 'devices.amount', 'users.name as user_name', 'users.id as user_id')
             ->leftJoin('device_owners', 'devices.id', '=', 'device_owners.device_id')
             ->leftJoin('users', 'device_owners.user_id', '=', 'users.id')
             ->where('devices.id', $id)->firstOrFail();
@@ -44,6 +46,8 @@ class Device extends Model
     {
         return self::create([
             'name' => $data['name'],
+            'serial_number' => $data['serial_number'],
+            'amount' => $data['amount'],
             'company_id' => Auth::user()->company_id,
         ]);
     }

@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('company_id');
+            $table->string('serial_number')->nullable()->default('');
+            $table->integer('amount')->nullable()->default(0);
             $table->timestamps();
         });
     }

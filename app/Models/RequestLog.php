@@ -23,7 +23,7 @@ class RequestLog extends Model
             'method' => $request->getMethod(),
             'status' => $response->getStatusCode(),
             'param' => json_encode($request->except(['password', 'password_confirmation']), JSON_UNESCAPED_UNICODE),
-            'response' => $request->getMethod() == 'GET' && $response->getStatusCode() == 200 ? "" : $response->getContent(),
+            'response' => '', // $request->getMethod() == 'GET' && $response->getStatusCode() == 200 ? "" : $response->getContent(),
             'note' => $note,
             'company_id' => $user != null ? $user->company_id : 0,
             'created_by' => $user != null ? $user->id : 0,
